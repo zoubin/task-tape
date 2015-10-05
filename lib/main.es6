@@ -58,5 +58,5 @@ function run() {
   this.emit('run');
 }
 
-export default require('tape')
+export default require('tape');
 
