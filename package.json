@@ -6,6 +6,9 @@
   "bin": {
     "task-tape": "./bin/task-tape.js"
   },
+  "engines": {
+    "node": ">= 0.11"
+  },
   "scripts": {
     "test": "gulp"
   },
