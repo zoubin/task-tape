@@ -1,4 +1,4 @@
-# task-tape [![Build Status](https://travis-ci.org/zoubin/task-tape.svg?branch=master)](https://travis-ci.org/zoubin/task-tape)
+# task-tape [![npm Version](http://img.shields.io/npm/v/task-tape.svg?style=flat)](https://www.npmjs.org/package/task-tape) [![Build Status](https://travis-ci.org/zoubin/task-tape.svg?branch=master)](https://travis-ci.org/zoubin/task-tape)
 Tape with [gulp async task support](https://github.com/gulpjs/gulp/blob/master/docs/API.md#async-task-support).
 
 ## Usage

@@ -65,7 +65,7 @@ rules:
   comma-style: 2
   indent: [2, 2]
   key-spacing: 2
-  max-nested-callbacks: [2, 3]
+  max-nested-callbacks: [2, 5]
   no-lonely-if: 2
   no-mixed-spaces-and-tabs: 2
   no-nested-ternary: 2
