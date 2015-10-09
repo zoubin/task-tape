@@ -1,7 +1,8 @@
 import Test from 'tape/lib/test';
 import { run as runTasks } from 'callback-sequence';
+import mix from 'util-mix';
 
-Object.assign(Test.prototype, { task, run });
+mix(Test.prototype, { task, run });
 
 function task(cb) {
   this._tasks = this._tasks || [];
