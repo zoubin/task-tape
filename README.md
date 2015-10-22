@@ -1,9 +1,19 @@
-# task-tape [![npm Version](http://img.shields.io/npm/v/task-tape.svg?style=flat)](https://www.npmjs.org/package/task-tape) [![Build Status](https://travis-ci.org/zoubin/task-tape.svg?branch=master)](https://travis-ci.org/zoubin/task-tape)
+# task-tape
 Tape with [gulp async task support](https://github.com/gulpjs/gulp/blob/master/docs/API.md#async-task-support).
+
+[![npm](https://nodei.co/npm/task-tape.png?downloads=true)](https://www.npmjs.org/package/task-tape)
+
+[![version](https://img.shields.io/npm/v/task-tape.svg)](https://www.npmjs.org/package/task-tape)
+[![status](https://travis-ci.org/zoubin/task-tape.svg?branch=master)](https://travis-ci.org/zoubin/task-tape)
+[![coverage](https://img.shields.io/coveralls/zoubin/task-tape.svg)](https://coveralls.io/github/zoubin/task-tape)
+[![dependencies](https://david-dm.org/zoubin/task-tape.svg)](https://david-dm.org/zoubin/task-tape)
+[![devDependencies](https://david-dm.org/zoubin/task-tape/dev-status.svg)](https://david-dm.org/zoubin/task-tape#info=devDependencies)
 
 ## Usage
 
-[![npm](https://nodei.co/npm/task-tape.png)](https://www.npmjs.org/package/task-tape)
+```bash
+npm install --save-dev task-tape tape
+```
 
 ```javascript
 var test = require('task-tape');

@@ -1,2 +1,3 @@
-require('babel-core/register')({ extensions: ['.es6'] });
-module.exports = require('./lib/main');
+require('babel-core/register')()
+module.exports = require('./lib/main')
+
