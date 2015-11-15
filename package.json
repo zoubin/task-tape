@@ -50,6 +50,7 @@
     "gulp-tape": "0.0.5",
     "isparta": "^3.0.4",
     "sink-transform": "^1.0.0",
+    "tape": "^4.2.0",
     "tap-spec": "^4.1.0",
     "through2": "^2.0.0"
   }
