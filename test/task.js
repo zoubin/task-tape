@@ -35,6 +35,7 @@ test('tasks', (t) => {
 })
 
 test('nested', (t) => {
+  t.plan(4)
   let async = (cb) => {
     process.nextTick(() => {
       t.ok(true, 'async callback')

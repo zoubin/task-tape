@@ -1,5 +1,5 @@
 # task-tape
-Tape with [gulp async task support](https://github.com/gulpjs/gulp/blob/master/docs/API.md#async-task-support).
+Tape with [gulpish task support](https://github.com/gulpjs/gulp/blob/master/docs/API.md#async-task-support).
 
 [![npm](https://nodei.co/npm/task-tape.png?downloads=true)](https://www.npmjs.org/package/task-tape)
 
@@ -11,115 +11,171 @@ Tape with [gulp async task support](https://github.com/gulpjs/gulp/blob/master/d
 
 ## Usage
 
+### Install with tape
+
 ```bash
 npm install --save-dev task-tape tape
+
 ```
 
+### Require directly
+
 ```javascript
-var test = require('task-tape');
+var test = require('task-tape')
+
 ```
+
+### Hook require
+
+```javascript
+require('task-tape')
+var test = require('tape')
+
+```
+
+### With [gulp-tape](https://www.npmjs.com/package/gulp-tape)
+
+```javascript
+gulp.task('test', function test() {
+  require('task-tape')
+  var tape = require('gulp-tape')
+  var reporter = require('tap-spec')
+  return gulp.src('test/*.js')
+    .pipe(tape({
+      reporter: reporter(),
+    }))
+})
+
+```
+
+## Example
+
+Please check the [example](https://github.com/zoubin/task-tape/tree/master/example) directory.
 
 ### The normal way
 
 ```javascript
+import test from 'tape'
 test('normal, sync', (t) => {
-  t.ok(true);
-  t.end();
-});
+  t.ok(true)
+  t.end()
+})
 
 test('normal, plan', (t) => {
-  t.plan(2);
+  t.plan(2)
   process.nextTick(() => {
-    t.ok(true);
-  });
-  t.ok(true);
-});
+    t.ok(true)
+  })
+  t.ok(true)
+})
 
 ```
 
 ### The gulp task way
 
 ```javascript
-import sink from 'sink-transform';
+import test from 'tape'
+import concat from 'concat-stream'
+import gulp from 'gulp'
+import fs from 'fs'
+import del from 'del'
 
 test('callback', (t, cb) => {
   process.nextTick(() => {
-    t.ok(true);
-    cb();
-  });
-});
+    t.ok(true)
+    cb()
+  })
+})
 
 test('promise', (t) => {
   return new Promise((rs) => {
     process.nextTick(() => {
-      t.ok(true);
-      rs();
-    });
-  });
-});
+      t.ok(true)
+      rs()
+    })
+  })
+})
 
 test('promise plan', (t) => {
-  t.plan(2);
-  t.ok(true);
+  t.plan(2)
+  t.ok(true)
   return new Promise((rs) => {
     process.nextTick(() => {
-      t.ok(true);
-      rs();
-    });
-  });
-});
+      t.ok(true)
+      rs()
+    })
+  })
+})
 
 test('stream', (t) => {
-  let s = sink.obj((rows, done) => {
-    t.same(rows, [ { x: 1 }, { y: 2 }, { z: 3 } ]);
-    done();
-  });
-  s.write({ x: 1 });
-  s.write({ y: 2 });
-  s.write({ z: 3 });
+  let s = concat({ encoding: 'object' }, (rows) => {
+    t.same(rows, [ { x: 1 }, { y: 2 }, { z: 3 } ])
+  })
+  s.write({ x: 1 })
+  s.write({ y: 2 })
   process.nextTick(() => {
-    s.end();
-  });
-  return s;
-});
+    s.end({ z: 3 })
+  })
+  return s
+})
 
-```
+// Run tasks in sequence.
+test('tasks in sequence', function(t) {
+  let rows = []
 
-## t.task(taskCallback)
-
-```javascript
-test('tasks', (t) => {
+  // clean
   t.task(() => {
-    t.ok(true, 'sync callback');
-  });
-  t.task((cb) => {
+    return del('build')
+  })
+
+  // collect rows
+  t.task(() => {
+    let stream = thr.obj()
+
+    stream.write({ index: 0 })
+
     process.nextTick(() => {
-      t.ok(true, 'async callback');
-      cb();
-    });
-  });
+      stream.end({ index: 1 })
+    })
+
+    return stream.pipe(concat({ encoding: 'object' }, function (rs) {
+      rows = rs.sort((a, b) => {
+        return a.index < b.index ? 1 : -1
+      })
+    }))
+  })
+
+  // stringify rows
   t.task(() => {
-    return new Promise((resolve) => {
-      process.nextTick(() => {
-        t.ok(true, 'return promise');
-        resolve();
-      });
-    });
-  });
-  t.task(() => {
-    let s = sink.obj((rows, done) => {
-      t.same(rows, [ { x: 1 }, { y: 2 }, { z: 3 } ], 'return stream');
-      done();
-    });
-    s.write({ x: 1 });
-    s.write({ y: 2 });
-    s.write({ z: 3 });
+    t.same(rows, [ { index: 1 }, { index: 0 } ])
+    let ws = fs.createWriteStream('rows.json')
+
     process.nextTick(() => {
-      s.end();
-    });
-    return s;
-  });
-});
+      ws.end(JSON.stringify(rows, null, 2))
+    })
+
+    return ws
+  })
+
+  // build
+  t.task(() => {
+    return gulp.src('rows.json')
+      .pipe(gulp.dest('build'))
+  })
+
+  // check
+  t.task(() => {
+    t.equal(
+      fs.readFileSync('rows.json', 'utf8'),
+      fs.readFileSync('build/rows.json', 'utf8')
+    )
+  })
+
+  // clean
+  t.task(() => {
+    return del('rows.json')
+  })
+})
 
 ```
 

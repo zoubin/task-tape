@@ -1,5 +1,5 @@
 import test from '../lib/main'
-import sink from 'sink-transform'
+import concat from 'concat-stream'
 
 test('callback', (t, cb) => {
   process.nextTick(() => {
@@ -29,9 +29,8 @@ test('promise plan', (t) => {
 })
 
 test('stream', (t) => {
-  let s = sink.obj((rows, done) => {
+  let s = concat({ encoding: 'object' }, (rows) => {
     t.same(rows, [ { x: 1 }, { y: 2 }, { z: 3 } ])
-    done()
   })
   s.write({ x: 1 })
   s.write({ y: 2 })
