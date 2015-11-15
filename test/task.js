@@ -2,24 +2,27 @@ import test from '../lib/main'
 import sink from 'sink-transform'
 
 test('tasks', (t) => {
+  t.plan(5)
+  let index = 0
   t.task(() => {
-    t.ok(true, 'sync callback')
+    t.equal(index++, 0, 'sync callback')
   })
   t.task((cb) => {
     process.nextTick(() => {
-      t.ok(true, 'async callback')
+      t.equal(index++, 1, 'async callback')
       cb()
     })
   })
   t.task(() => {
     return new Promise((resolve) => {
       process.nextTick(() => {
-        t.ok(true, 'return promise')
+        t.equal(index++, 2, 'return promise')
         resolve()
       })
     })
   })
   t.task(() => {
+    t.equal(index, 3)
     let s = sink.obj((rows, done) => {
       t.same(rows, [ { x: 1 }, { y: 2 }, { z: 3 } ], 'return stream')
       done()
