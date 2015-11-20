@@ -1,4 +1,10 @@
-<!-- LATEST 5120353 -->
+<!-- LATEST 2dd01f3 -->
+
+## [v1.1.1](https://github.com/zoubin/task-tape/commit/2dd01f3) (2015-11-20)
+
+* [ 2015-11-20 [f67b4ac](https://github.com/zoubin/task-tape/commit/f67b4ac) ] Fix global installed task-tape
+
+* [ 2015-11-20 [3e5e287](https://github.com/zoubin/task-tape/commit/3e5e287) ] CHANGELOG
 
 ## [v1.1.0](https://github.com/zoubin/task-tape/commit/5120353) (2015-11-20)
 
