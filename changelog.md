@@ -1,4 +1,12 @@
-<!-- LATEST 45d39bf -->
+<!-- LATEST 5120353 -->
+
+## [v1.1.0](https://github.com/zoubin/task-tape/commit/5120353) (2015-11-20)
+
+* [ 2015-11-20 [d67455d](https://github.com/zoubin/task-tape/commit/d67455d) ] Support babel
+
+* [ 2015-11-15 [1280013](https://github.com/zoubin/task-tape/commit/1280013) ] Test for task sequence
+
+* [ 2015-11-15 [56adcf4](https://github.com/zoubin/task-tape/commit/56adcf4) ] CHANGELOG
 
 ## [v1.0.2](https://github.com/zoubin/task-tape/commit/45d39bf) (2015-11-15)
 
