@@ -10,5 +10,22 @@ program
 if (program.babel) {
   require('babel-core/register')
 }
-require('..')
-require('tape/bin/tape')
+
+var resolve = require('resolve')
+var hookRequire = require('../lib/hookRequire')
+var tape = require(
+  resolve.sync('tape', { basedir: process.cwd() })
+)
+hookRequire(tape)
+
+var path = require('path')
+var glob = require('glob')
+
+program.args.forEach(function (arg) {
+  glob(arg, function (err, files) {
+    files.forEach(function (file) {
+      require(path.resolve(file))
+    })
+  })
+})
+

@@ -1,5 +1,5 @@
 # task-tape
-Tape with [gulpish task support](https://github.com/gulpjs/gulp/blob/master/docs/API.md#async-task-support).
+[Tape](https://github.com/substack/tape) with [gulpish task support](https://github.com/gulpjs/gulp/blob/master/docs/API.md#async-task-support).
 
 [![npm](https://nodei.co/npm/task-tape.png?downloads=true)](https://www.npmjs.org/package/task-tape)
 
@@ -11,7 +11,28 @@ Tape with [gulpish task support](https://github.com/gulpjs/gulp/blob/master/docs
 
 ## Usage
 
-### Install with tape
+### Global installation
+
+```bash
+npm install -g task-tape
+
+```
+
+Go to your project directory, which has tape installed already:
+
+```bash
+task-tape test/*.js
+
+```
+
+Or with babel (please install babel first):
+
+```bash
+task-tape --babel test/*.js
+
+```
+
+### Local installation
 
 ```bash
 npm install --save-dev task-tape tape
