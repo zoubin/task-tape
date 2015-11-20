@@ -48,6 +48,31 @@ gulp.task('test', function test() {
 
 ```
 
+### npm test
+
+In `package.json`:
+
+```json
+{
+  "scripts": {
+    "test": "task-tape test/*.js"
+  }
+}
+
+```
+
+To support babel:
+
+```json
+{
+  "scripts": {
+    "test": "task-tape --babel test/*.js"
+  }
+}
+
+```
+
+
 ## Example
 
 Please check the [example](https://github.com/zoubin/task-tape/tree/master/example) directory.
