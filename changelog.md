@@ -1,4 +1,10 @@
-<!-- LATEST 2dd01f3 -->
+<!-- LATEST b784ae2 -->
+
+## [v1.1.2](https://github.com/zoubin/task-tape/commit/b784ae2) (2015-11-20)
+
+* [ 2015-11-20 [0716f2a](https://github.com/zoubin/task-tape/commit/0716f2a) ] Fix require babel
+
+* [ 2015-11-20 [c0a1c22](https://github.com/zoubin/task-tape/commit/c0a1c22) ] CHANGELOG
 
 ## [v1.1.1](https://github.com/zoubin/task-tape/commit/2dd01f3) (2015-11-20)
 
