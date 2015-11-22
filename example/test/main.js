@@ -82,17 +82,27 @@ test('stream support', function(t) {
 })
 
 test('tasks in sequence', function(t) {
-  t.plan(2)
+  t.plan(7)
 
   let rows = []
 
   // clean
   t.task(() => {
+    t.ok(true)
     return del('build')
+  })
+
+  // delay
+  t.task((cb) => {
+    t.ok(true)
+    setTimeout(() => {
+      cb()
+    }, 100)
   })
 
   // collect rows
   t.task(() => {
+    t.ok(true)
     let stream = thr.obj()
 
     stream.write({ index: 0 })
@@ -122,6 +132,7 @@ test('tasks in sequence', function(t) {
 
   // build
   t.task(() => {
+    t.ok(true)
     return gulp.src('rows.json')
       .pipe(gulp.dest('build'))
   })
@@ -136,6 +147,7 @@ test('tasks in sequence', function(t) {
 
   // clean
   t.task(() => {
+    t.ok(true)
     return del('rows.json')
   })
 })

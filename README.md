@@ -12,7 +12,6 @@
 ## Usage
 
 ### Global installation
-
 ```bash
 npm install -g task-tape
 
@@ -31,6 +30,7 @@ Or with babel (please install babel first):
 task-tape --babel test/*.js
 
 ```
+
 
 ### Local installation
 
@@ -96,18 +96,35 @@ To support babel:
 
 ## Example
 
-Please check the [example](https://github.com/zoubin/task-tape/tree/master/example) directory.
+### End the test
 
-### The normal way
+#### `t.end`
 
 ```javascript
 import test from 'tape'
-test('normal, sync', (t) => {
+
+test('sync', (t) => {
+  t.ok(true)
   t.ok(true)
   t.end()
 })
 
-test('normal, plan', (t) => {
+test('async', (t) => {
+  process.nextTick(() => {
+    t.ok(true)
+    t.end()
+  })
+  t.ok(true)
+})
+
+```
+
+#### `t.plan`
+
+```javascript
+import test from 'tape'
+
+test('async', (t) => {
   t.plan(2)
   process.nextTick(() => {
     t.ok(true)
@@ -117,15 +134,13 @@ test('normal, plan', (t) => {
 
 ```
 
-### The gulp task way
+### Gulpish callback
 
 ```javascript
 import test from 'tape'
 import concat from 'concat-stream'
-import gulp from 'gulp'
-import fs from 'fs'
-import del from 'del'
 
+// accept a callback
 test('callback', (t, cb) => {
   process.nextTick(() => {
     t.ok(true)
@@ -133,6 +148,7 @@ test('callback', (t, cb) => {
   })
 })
 
+// return a promise
 test('promise', (t) => {
   return new Promise((rs) => {
     process.nextTick(() => {
@@ -142,17 +158,7 @@ test('promise', (t) => {
   })
 })
 
-test('promise plan', (t) => {
-  t.plan(2)
-  t.ok(true)
-  return new Promise((rs) => {
-    process.nextTick(() => {
-      t.ok(true)
-      rs()
-    })
-  })
-})
-
+// return a stream
 test('stream', (t) => {
   let s = concat({ encoding: 'object' }, (rows) => {
     t.same(rows, [ { x: 1 }, { y: 2 }, { z: 3 } ])
@@ -165,17 +171,40 @@ test('stream', (t) => {
   return s
 })
 
+```
+
+### Gulpish callbacks in sequence
+
+```javascript
+import test from 'tape'
+import concat from 'concat-stream'
+import gulp from 'gulp'
+import fs from 'fs'
+import del from 'del'
+
 // Run tasks in sequence.
 test('tasks in sequence', function(t) {
+  // t.plan(7)
+
   let rows = []
 
   // clean
   t.task(() => {
+    t.ok(true)
     return del('build')
+  })
+
+  // delay
+  t.task((cb) => {
+    t.ok(true)
+    setTimeout(() => {
+      cb()
+    }, 100)
   })
 
   // collect rows
   t.task(() => {
+    t.ok(true)
     let stream = thr.obj()
 
     stream.write({ index: 0 })
@@ -205,6 +234,7 @@ test('tasks in sequence', function(t) {
 
   // build
   t.task(() => {
+    t.ok(true)
     return gulp.src('rows.json')
       .pipe(gulp.dest('build'))
   })
@@ -219,9 +249,11 @@ test('tasks in sequence', function(t) {
 
   // clean
   t.task(() => {
+    t.ok(true)
     return del('rows.json')
   })
 })
+
 
 ```
 

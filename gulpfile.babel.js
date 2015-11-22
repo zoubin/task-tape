@@ -8,7 +8,7 @@ gulp.task('clean', () => {
 gulp.task('scripts', ['clean'], () => {
   let babel = require('gulp-babel')
   return gulp.src(['lib/*.js', 'bin/*.js'], { base: process.cwd() })
-    .pipe(babel())
+    .pipe(babel({ presets: ['es2015'] }))
     .pipe(gulp.dest('build'))
 })
 
@@ -37,7 +37,7 @@ gulp.task('lint', () => {
     .pipe(eslint.failAfterError())
 })
 
-gulp.task('test', ['lint'], test)
+gulp.task('test', test)
 gulp.task('coverage',
   require('callback-sequence')(instrument, test, report)
 )

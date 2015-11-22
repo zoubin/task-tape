@@ -29,9 +29,8 @@ test('tasks', (t) => {
     })
     s.write({ x: 1 })
     s.write({ y: 2 })
-    s.write({ z: 3 })
     process.nextTick(() => {
-      s.end()
+      s.end({ z: 3 })
     })
     return s
   })
