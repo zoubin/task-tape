@@ -1,6 +1,6 @@
 {
   "name": "task-tape",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Tape with gulp async task support",
   "main": "index",
   "bin": {
