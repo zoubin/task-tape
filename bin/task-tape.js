@@ -4,7 +4,7 @@ var program = require('commander')
 
 program
   .version(require('../package.json').version)
-  .option('-b --babel', 'tape babel code', false)
+  .option('-b, --babel', 'tape babel code', false)
   .parse(process.argv)
 
 var resolve = require('resolve')
