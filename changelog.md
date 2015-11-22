@@ -1,4 +1,14 @@
-<!-- LATEST b784ae2 -->
+<!-- LATEST 431d55d -->
+
+## [v1.2.0](https://github.com/zoubin/task-tape/commit/431d55d) (2015-11-22)
+
+* [ 2015-11-22 [bf0e11e](https://github.com/zoubin/task-tape/commit/bf0e11e) ] Fix babel export default
+
+* [ 2015-11-22 [92085ea](https://github.com/zoubin/task-tape/commit/92085ea) ] Travis: 0.12, 4, stable
+
+* [ 2015-11-22 [b9d2e61](https://github.com/zoubin/task-tape/commit/b9d2e61) ] Propagate errors
+
+* [ 2015-11-20 [da63a18](https://github.com/zoubin/task-tape/commit/da63a18) ] CHANGELOG
 
 ## [v1.1.2](https://github.com/zoubin/task-tape/commit/b784ae2) (2015-11-20)
 
