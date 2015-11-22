@@ -1,4 +1,10 @@
-<!-- LATEST 431d55d -->
+<!-- LATEST a76012a -->
+
+## [v1.2.1](https://github.com/zoubin/task-tape/commit/a76012a) (2015-11-22)
+
+* [ 2015-11-22 [8e04551](https://github.com/zoubin/task-tape/commit/8e04551) ] Add tape to peerDependencies, Fix export default
+
+* [ 2015-11-22 [5775051](https://github.com/zoubin/task-tape/commit/5775051) ] CHANGELOG
 
 ## [v1.2.0](https://github.com/zoubin/task-tape/commit/431d55d) (2015-11-22)
 
