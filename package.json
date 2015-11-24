@@ -2,7 +2,7 @@
   "name": "task-tape",
   "version": "1.2.1",
   "description": "Tape with gulp async task support",
-  "main": "lib/task-tape.js",
+  "main": "index.js",
   "bin": {
     "task-tape": "./bin/task-tape.js"
   },
@@ -11,7 +11,11 @@
   },
   "scripts": {
     "test": "npm run lint && ./bin/task-tape.js test/*.js",
-    "lint": "eslint lib/*.js test/*.js bin/*.js"
+    "lint": "eslint index.js lib/*.js test/*.js bin/*.js",
+    "coverage": "istanbul cover --root lib --print both ./bin/task-tape.js -- test/*.js",
+    "check-coverage": "istanbul check-coverage --statements 90 --functions 90 --branches 85 --lines 90",
+    "upload-coverage": "cat ./coverage/lcov.info | coveralls",
+    "cover": "npm run coverage && npm run check-coverage && npm run upload-coverage"
   },
   "repository": {
     "type": "git",
@@ -43,7 +47,9 @@
   },
   "devDependencies": {
     "concat-stream": "^1.5.1",
+    "coveralls": "^2.11.4",
     "eslint": "^1.10.1",
+    "istanbul": "^0.4.0",
     "sink-transform": "^1.0.0",
     "tape": "^4.2.0",
     "through2": "^2.0.0"
