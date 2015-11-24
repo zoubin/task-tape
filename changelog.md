@@ -1,4 +1,12 @@
-<!-- LATEST a76012a -->
+<!-- LATEST 0d1ed12 -->
+
+## [v1.2.2](https://github.com/zoubin/task-tape/commit/0d1ed12) (2015-11-24)
+
+* [ 2015-11-24 [224c486](https://github.com/zoubin/task-tape/commit/224c486) ] Add coverage
+
+* [ 2015-11-24 [cd1c8eb](https://github.com/zoubin/task-tape/commit/cd1c8eb) ] Use es5 instead of es6, babel 6 is a little slow
+
+* [ 2015-11-22 [2b0259d](https://github.com/zoubin/task-tape/commit/2b0259d) ] CHANGELOG
 
 ## [v1.2.1](https://github.com/zoubin/task-tape/commit/a76012a) (2015-11-22)
 
