@@ -1,27 +1,27 @@
-import test from '../lib/main'
+var test = require('tape')
 
-test('sync t.end', (t) => {
+test('sync t.end', function (t) {
   t.ok(true)
   t.end()
 })
 
-test('sync t.plan', (t) => {
+test('sync t.plan', function (t) {
   t.plan(2)
   t.ok(true)
   t.ok(true)
 })
 
-test('async t.end', (t) => {
+test('async t.end', function (t) {
   t.ok(true)
-  process.nextTick(() => {
+  process.nextTick(function () {
     t.ok(true)
     t.end()
   })
 })
 
-test('async t.plan', (t) => {
+test('async t.plan', function (t) {
   t.plan(2)
-  process.nextTick(() => {
+  process.nextTick(function () {
     t.ok(true)
   })
   t.ok(true)
@@ -29,7 +29,7 @@ test('async t.plan', (t) => {
 
 test('no callback')
 
-test.skip('t.skip', () => {
+test.skip('t.skip', function () {
   throw new Error('Not Skipped')
 })
 

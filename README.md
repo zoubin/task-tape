@@ -1,11 +1,8 @@
 # task-tape
 [Tape](https://github.com/substack/tape) with [gulpish task support](https://github.com/gulpjs/gulp/blob/master/docs/API.md#async-task-support).
 
-[![npm](https://nodei.co/npm/task-tape.png?downloads=true)](https://www.npmjs.org/package/task-tape)
-
 [![version](https://img.shields.io/npm/v/task-tape.svg)](https://www.npmjs.org/package/task-tape)
 [![status](https://travis-ci.org/zoubin/task-tape.svg?branch=master)](https://travis-ci.org/zoubin/task-tape)
-[![coverage](https://img.shields.io/coveralls/zoubin/task-tape.svg)](https://coveralls.io/github/zoubin/task-tape)
 [![dependencies](https://david-dm.org/zoubin/task-tape.svg)](https://david-dm.org/zoubin/task-tape)
 [![devDependencies](https://david-dm.org/zoubin/task-tape/dev-status.svg)](https://david-dm.org/zoubin/task-tape#info=devDependencies)
 

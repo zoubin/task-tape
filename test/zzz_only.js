@@ -1,12 +1,12 @@
-import test from '../lib/main'
+var test = require('tape')
 
-test('only', (t) => {
-  let count = 0
-  test('first', (tt) => {
+test('only', function (t) {
+  var count = 0
+  test('first', function (tt) {
     tt.equal(++count, 1)
     tt.end()
   })
-  test.only('second', (tt) => {
+  test.only('second', function (tt) {
     tt.equal(++count, 1)
     tt.end()
   })
